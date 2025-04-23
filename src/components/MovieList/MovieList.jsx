@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../context/AuthProvider";
 import MovieItem from "../MovieItem/MovieItem";
 import { getAllMovies } from "../../services/movies.js";

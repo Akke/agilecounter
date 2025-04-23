@@ -1,3 +1,4 @@
+import React from "react";
 import "./Login.css";
 import {login} from "../../services/login.js";
 import { useContext } from "react";
@@ -10,8 +11,11 @@ const Login = () => {
         const onSubmit = async (e) => {
             e.preventDefault();
 
-            const username = e.target.username.value;
-            const password = e.target.password.value;
+            const form = e.target;
+            const formData = new FormData(form);
+
+            const username = formData.get("username");
+            const password = formData.get("password");
 
             const result = await login(username, password);
 
@@ -23,14 +27,13 @@ const Login = () => {
                 console.error(error);
             }
         }
-
         
         return (
             <div className="login-form">
                 <form onSubmit={onSubmit}>
                     <input type="text" name="username" placeholder="Username" />
                     <input type="password" name="password" placeholder="Password" />
-                    <button type="submit" >Login</button>
+                    <button type="submit" name="login">Login</button>
                 </form>
             </div>
         );
@@ -41,7 +44,7 @@ const Login = () => {
         
         return (
             <div className="login-form">
-                <button className="logout" onClick={onClick}>Logout</button>
+                <button className="logout" name="logout" onClick={onClick}>Logout</button>
             </div>
         );
     }
