@@ -5,41 +5,39 @@ import { getAllMovies } from "../../services/movies.js";
 import "./MovieList.css";
 
 const MovieList = () => {
-    const { user } = useContext(AuthContext);
-    
-    const [movies, setMovies] = useState([]);
+  const { user } = useContext(AuthContext);
 
-    useEffect(() => {
-        const allMovies = async () => {
-            const result = await getAllMovies(user);
-            const data = await result.json();
-            
-            setMovies(data);
-        }
+  const [movies, setMovies] = useState([]);
 
-        if(user) allMovies();
-    }, [user]);
+  useEffect(() => {
+    const allMovies = async () => {
+      const result = await getAllMovies(user);
+      const data = await result.json();
+      setMovies(data);
+    };
+    if (user) allMovies();
+  }, [user]);
 
-    if(user) {
-        return (
-            <>
-                <h1>Movies</h1>
-                <div className="movie-list">
-                    {movies.map((movie, i) => {
-                        return (
-                            <MovieItem 
-                                key={i}
-                                title={movie.title} 
-                                director={movie.director}
-                                description={movie.description}
-                                year={movie.productionYear}
-                            />
-                        )
-                    })}
-                </div>
-            </>
-        );
-    }
-}
+  if (user) {
+    return (
+      <>
+        <h1>Movies</h1>
+        <div className="movie-list">
+          {movies.map((movie, i) => {
+            return (
+              <MovieItem
+                key={i}
+                title={movie.title}
+                director={movie.director}
+                description={movie.description}
+                year={movie.productionYear}
+              />
+            );
+          })}
+        </div>
+      </>
+    );
+  }
+};
 
 export default MovieList;
