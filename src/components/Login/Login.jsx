@@ -33,7 +33,7 @@ const Login = () => {
                 <form onSubmit={onSubmit}>
                     <input type="text" name="username" placeholder="Username" />
                     <input type="password" name="password" placeholder="Password" />
-                    <button type="submit" name="login">Login</button>
+                    <button type="submit" name="login">Login and get movies</button>
                 </form>
             </div>
         );

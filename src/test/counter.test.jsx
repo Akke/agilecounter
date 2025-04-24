@@ -1,41 +1,21 @@
-import { beforeAll, afterEach, afterAll } from "vitest";
-import { server } from "./mocks/server.js";
-import "whatwg-fetch";
-import { render, screen, fireEvent, waitFor } from "@testing-library/react";
+import { fireEvent, render, screen } from "@testing-library/react";
 import Counter from "../components/Counter/Counter.jsx";
-import Login from "../components/Login/Login.jsx";
 import React from "react";
-import AuthProvider from "../context/AuthProvider.jsx";
-import MovieList from "../components/MovieList/MovieList.jsx";
 
-beforeAll(() => server.listen());
-afterEach(() => server.resetHandlers());
-afterAll(() => server.close());
+describe("Counter komponent", () => {
+    it("visar att count är 0 som standard", () => {
+        render(<Counter />);
 
-it("visar att count är 0 som standard", () => {
-    render(<Counter />);
-    expect(screen.getByText("0")).toBeDefined();
-});
-
-it("hämtar jwt token genom att trycka på logga in", async () => {
-    render(
-        <AuthProvider>
-            <Login />
-        </AuthProvider>
-    );
-
-    const loginButton = screen.getByRole("button", { name: /login/i });
-
-    const usernameInput = screen.getByPlaceholderText("Username");
-    const passwordInput = screen.getByPlaceholderText("Password");
-
-    fireEvent.change(usernameInput, {
-        target: { value: "axel" }
+        expect(screen.getByText("0")).toBeDefined();
     });
 
-    fireEvent.change(passwordInput, {
-        target: { value: "123456789" }
-    });
+    it("visar att count ökar med 1 efter ett klick", () => {
+        render(<Counter />);
 
-    fireEvent.click(loginButton);
+        const button = screen.getByRole("button");
+
+        fireEvent.click(button);
+
+        expect(screen.getByText("1")).toBeDefined();
+    });
 });

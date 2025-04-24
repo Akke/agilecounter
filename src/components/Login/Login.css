@@ -1,16 +1,18 @@
 .login-form form {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     gap: 10px;
     margin: 20px 0;
 }
 
 .login-form form input {
     padding: 10px;
-    border: none;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
     font-family: inherit;
     font-size: inherit;
     color: inherit;
+    flex: 1;
 }
 
 .login-form form button[type="submit"] {
@@ -19,6 +21,7 @@
     color: inherit;
     font-weight: bold;
     cursor: pointer;
+    flex: 1;
 }
 
 .logout {

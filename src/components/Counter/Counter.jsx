@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import "./Counter.css";
 
 const Counter = () => {
     const [count, setCount] = useState(0);
@@ -10,8 +11,7 @@ const Counter = () => {
     return (
         <>
             {count}
-            <br />
-            <br />
+            
             <button onClick={AddToCount}>Öka</button>
         </>
     );

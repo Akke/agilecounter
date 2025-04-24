@@ -13,7 +13,7 @@ const MovieList = () => {
         const allMovies = async () => {
             const result = await getAllMovies(user);
             const data = await result.json();
-            
+
             setMovies(data);
         }
 

@@ -6,6 +6,6 @@ export default defineConfig({
   //nedanstående läggs till:
   test: {
     environment: 'jsdom',
-    globals: true
+    globals: true,
   }
 });

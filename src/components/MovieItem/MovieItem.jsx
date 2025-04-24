@@ -1,4 +1,5 @@
 import "./MovieItem.css";
+import React from "react";
 
 const MovieItem = ({ title, director, description, year }) => {
     return (
